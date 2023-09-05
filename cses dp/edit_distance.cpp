@@ -3,29 +3,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int mod = 1e9+7;
-int editdist(int i, int j, int n, int m,string &s1, string &s2, vector<vector<int>> &dp)
-{
-    if(i==n) return m-j;
-    if(j==m) return n-i;
+// int editdist(int i, int j, int n, int m,string &s1, string &s2, vector<vector<int>> &dp)
+// {
+//     if(i==n) return m-j;
+//     if(j==m) return n-i;
 
-    if(dp[i][j]!=-1) return dp[i][j];
+//     if(dp[i][j]!=-1) return dp[i][j];
 
-    int ans = 0;
-    if(s1[i]==s2[j])
-    {
-        return dp[i][j] = editdist(i+1,j+1,n,m,s1,s2,dp);
-    }
-    else
-    {
-        int insertion = 1 + editdist(i,j+1,n,m,s1,s2,dp);
-        int deletion = 1 + editdist(i+1,j,n,m,s1,s2,dp);
-        int replace = 1 + editdist(i+1,j+1,n,m,s1,s2,dp);
-        ans = min({insertion,deletion,replace});
-        // ans = (1 + min({editdist(i,j+1,n,m,s1,s2,dp), editdist(i+1,j,n,m,s1,s2,dp),editdist(i+1,j+1,n,m,s1,s2,dp)}))%mod;
+//     int ans = 0;
+//     if(s1[i]==s2[j])
+//     {
+//         return dp[i][j] = editdist(i+1,j+1,n,m,s1,s2,dp);
+//     }
+//     else
+//     {
+//         int insertion = 1 + editdist(i,j+1,n,m,s1,s2,dp);
+//         int deletion = 1 + editdist(i+1,j,n,m,s1,s2,dp);
+//         int replace = 1 + editdist(i+1,j+1,n,m,s1,s2,dp);
+//         ans = min({insertion,deletion,replace});
+//         // ans = (1 + min({editdist(i,j+1,n,m,s1,s2,dp), editdist(i+1,j,n,m,s1,s2,dp),editdist(i+1,j+1,n,m,s1,s2,dp)}))%mod;
 
-    }
-    return dp[i][j]=ans;
-}
+//     }
+//     return dp[i][j]=ans;
+// }
 
 
 int main() {
@@ -40,8 +40,8 @@ int main() {
     int n = s1.size();
     int m = s2.size();
 
-    vector<vector<int>> dp(n, vector<int>(m, -1));
-    cout<<editdist(0,0,n,m,s1,s2,dp);
+    // vector<vector<int>> dp(n, vector<int>(m, -1));
+    // cout<<editdist(0,0,n,m,s1,s2,dp);
     
     vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
 
